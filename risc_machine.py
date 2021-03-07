@@ -12,6 +12,7 @@ class RiscMachine:
             elif op=="SLL"  and a != "x0":
                 self.registers[a] = self.registers[b] << self.registers[c]
 
+
         elif len(cmd)==3:
             (op, a, b) = cmd
             if op=="LUI" and a != "x0":
