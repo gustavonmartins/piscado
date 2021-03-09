@@ -1,7 +1,7 @@
 from risc_machine import RiscMachine
 
 
-def test_arithmetic_register_to_register():
+def test_add():
     rm = RiscMachine()
 
     rm.enter_cmd("ADDI", "x1", "x0", 50)
@@ -10,7 +10,7 @@ def test_arithmetic_register_to_register():
     assert rm.inspect_register("x3") == 110
 
 
-def test_shift_left_left():
+def test_sll():
     rm = RiscMachine()
 
     rm.enter_cmd("ADDI", "x1", "x0", int("00000000000000000000000000001100", 2))
