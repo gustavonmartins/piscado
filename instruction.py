@@ -23,10 +23,12 @@ class InstructionR:
     funct7: int
 
     def execute(self, rs1, rs2):
+        out = None
         if self.funct3 == int("000", 2):
-            return rs1 + rs2
+            out = rs1 + rs2
         elif self.funct3 == int("001", 2):
-            return rs1 << rs2
+            out = rs1 << rs2
+        return out
 
 
 @dataclass
@@ -42,3 +44,6 @@ class InstructionU:
 @dataclass
 class InstructionJ:
     offset: int
+
+    def execute(self):
+        return self.offset

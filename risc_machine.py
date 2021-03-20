@@ -10,9 +10,6 @@ class RiscMachine:
         self.mar = None
         self.mdr = None
 
-        # Useful when creating code
-        self.writer_pc = 0
-
     def inspect_register(self, register):
         return self.registers.get(register)
 
@@ -30,18 +27,28 @@ class RiscMachine:
         self.pc = self.pc + 1
 
     def _execute(self):
-        if isinstance(self.ir, InstructionI):
-            if self.ir.rd != "x0":
-                self.registers[self.ir.rd] = self.ir.execute(
-                    self.registers[self.ir.rs1]
+        current_instruction = self.ir
+        if isinstance(current_instruction, InstructionI):
+            if current_instruction.rd != "x0":
+                rd = current_instruction.rd
+                rs1_value = self.registers[current_instruction.rs1]
+
+                self.registers[rd] = current_instruction.execute(rs1_value)
+
+        if isinstance(current_instruction, InstructionR):
+            if current_instruction.rd != "x0":
+                rd = current_instruction.rd
+                rs1_value = self.registers[current_instruction.rs1]
+                rs2_value = self.registers[current_instruction.rs2]
+                self.registers[rd] = current_instruction.execute(
+                    rs1_value,
+                    rs2_value,
                 )
-        if isinstance(self.ir, InstructionR):
-            if self.ir.rd != "x0":
-                self.registers[self.ir.rd] = self.ir.execute(
-                    self.registers[self.ir.rs1], self.registers[self.ir.rs2]
-                )
-        if isinstance(self.ir, InstructionU):
-            if self.ir.rd != "x0":
-                self.registers[self.ir.rd] = self.ir.execute()
-        if isinstance(self.ir, InstructionJ):
-            self.pc += self.ir.offset
+
+        if isinstance(current_instruction, InstructionU):
+            if current_instruction.rd != "x0":
+                rd = current_instruction.rd
+                self.registers[rd] = current_instruction.execute()
+
+        if isinstance(current_instruction, InstructionJ):
+            self.pc += current_instruction.execute()
