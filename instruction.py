@@ -9,6 +9,9 @@ class InstructionI:
     rs1: str
     imm: int
 
+    def execute(self, rs1):
+        return rs1 + self.imm
+
 
 @dataclass
 class InstructionR:
