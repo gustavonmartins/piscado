@@ -1,4 +1,4 @@
-from instruction import InstructionI, InstructionR, InstructionU
+from instruction import InstructionI, InstructionR, InstructionU, InstructionJ
 
 
 class RiscMachine:
@@ -50,6 +50,9 @@ class RiscMachine:
             )
             # self.registers[a] = (b >> 12) << 12
 
+        if op == "J":
+            self.program_memory.append(InstructionJ(offset=a))
+
     def inspect_register(self, register):
         return self.registers.get(register)
 
@@ -75,6 +78,14 @@ class RiscMachine:
     def execute(self):
         if isinstance(self.ir, InstructionI):
             self.registers[self.ir.rd] = self.registers[self.ir.rs1] + self.ir.imm
+        if isinstance(self.ir, InstructionR):
+            self.registers[self.ir.rd] = self.ir.execute(
+                self.registers[self.ir.rs1], self.registers[self.ir.rs2]
+            )
+        if isinstance(self.ir, InstructionU):
+            self.registers[self.ir.rd] = self.ir.execute()
+        if isinstance(self.ir, InstructionJ):
+            self.pc += self.ir.offset
 
     def decode(self):
         pass
