@@ -36,14 +36,14 @@ class RiscCompiler:
                 )
             )
             # self.registers[a] = self.registers[b] << self.registers[c]
-        if op == "LUI":
+        elif op == "LUI":
             self.program_memory.append(
                 InstructionU(opcode=int("0110111", 2), rd=a, imm=b)
             )
             # self.registers[a] = (b >> 12) << 12
 
-        if op == "J":
-            self.program_memory.append(InstructionJ(offset=a))
+        elif op == "JAL":
+            self.program_memory.append(InstructionJ(offset=b, rd=a))
 
     def createoutput(self):
         return self.program_memory

@@ -44,6 +44,7 @@ class InstructionU:
 @dataclass
 class InstructionJ:
     offset: int
+    rd: str
 
     def execute(self):
         return self.offset

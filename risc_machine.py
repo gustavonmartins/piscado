@@ -3,7 +3,7 @@ from instruction import InstructionI, InstructionR, InstructionU, InstructionJ
 
 class RiscMachine:
     def __init__(self):
-        self.registers = {"x0": 0, "x1": 0, "x2": 0}
+        self.registers = {"x0": 0, "x1": 0, "x2": 0, "x5": 0, "x10": 0}
         self.program_memory = []
         self.pc = 0
         self.ir = None
@@ -51,4 +51,6 @@ class RiscMachine:
                 self.registers[rd] = current_instruction.execute()
 
         if isinstance(current_instruction, InstructionJ):
-            self.pc += current_instruction.execute()
+            if current_instruction.rd != "x0":
+                self.registers[current_instruction.rd] = self.pc
+            self.pc += current_instruction.execute() - 1
