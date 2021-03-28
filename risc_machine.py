@@ -28,16 +28,14 @@ class RiscMachine:
 
     def _execute(self):
         current_instruction = self.ir
+        rd = current_instruction.rd
         if isinstance(current_instruction, InstructionI):
-            if current_instruction.rd != "x0":
-                rd = current_instruction.rd
+            if rd != "x0":
                 rs1_value = self.registers[current_instruction.rs1]
-
                 self.registers[rd] = current_instruction.execute(rs1_value)
 
         if isinstance(current_instruction, InstructionR):
-            if current_instruction.rd != "x0":
-                rd = current_instruction.rd
+            if rd != "x0":
                 rs1_value = self.registers[current_instruction.rs1]
                 rs2_value = self.registers[current_instruction.rs2]
                 self.registers[rd] = current_instruction.execute(
@@ -46,11 +44,10 @@ class RiscMachine:
                 )
 
         if isinstance(current_instruction, InstructionU):
-            if current_instruction.rd != "x0":
-                rd = current_instruction.rd
+            if rd != "x0":
                 self.registers[rd] = current_instruction.execute()
 
         if isinstance(current_instruction, InstructionJ):
-            if current_instruction.rd != "x0":
-                self.registers[current_instruction.rd] = self.pc
+            if rd != "x0":
+                self.registers[rd] = self.pc
             self.pc += current_instruction.execute() - 1
