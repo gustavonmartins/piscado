@@ -12,7 +12,7 @@ from riscv.instruction import (
 class RiscMachine:
     """
     This implements a machine able of executing Risc V instructions.
-    Needs to be passed
+    Load it with a program first, then execute cycles to see it running
     """
 
     def __init__(self, program=None):
