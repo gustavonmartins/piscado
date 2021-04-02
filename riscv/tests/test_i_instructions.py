@@ -9,14 +9,14 @@ def test_addi():
     """
     Tests ADDI instruction
     """
-    rm = RiscMachine()
+
     rc = RiscCompiler()
 
-    assert rm.inspect_register("x0") == 0
-
     rc.enter_input("ADDI", "x1", "x0", 5)
-    program = rc.createoutput()
-    rm.program_memory = program
+
+    program_memory = rc.createoutput()
+    rm = RiscMachine(program=program_memory)
+
     rm.run_one_cycle()
     assert rm.inspect_register("x1") == 5
 
@@ -25,7 +25,6 @@ def test_many_addi():
     """
     Tests batch of ADDI instructions
     """
-    rm = RiscMachine()
     rc = RiscCompiler()
 
     rc.enter_input("ADDI", "x0", "x0", 6)
@@ -34,7 +33,7 @@ def test_many_addi():
     rc.enter_input("ADDI", "x3", "x1", 30)
 
     program = rc.createoutput()
-    rm.program_memory = program
+    rm = RiscMachine(program=program)
     rm.run_one_cycle()
     rm.run_one_cycle()
     rm.run_one_cycle()

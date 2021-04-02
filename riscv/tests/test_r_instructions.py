@@ -9,7 +9,6 @@ def test_add():
     """
     Tests ADD instructions
     """
-    rm = RiscMachine()
     rc = RiscCompiler()
 
     rc.enter_input("ADDI", "x1", "x0", 50)
@@ -17,7 +16,7 @@ def test_add():
     rc.enter_input("ADD", "x3", "x1", "x2")
 
     program_memory = rc.createoutput()
-    rm.program_memory = program_memory
+    rm = RiscMachine(program=program_memory)
 
     rm.run_one_cycle()
     rm.run_one_cycle()
@@ -29,7 +28,6 @@ def test_sll():
     """
     Tests SLL instruction
     """
-    rm = RiscMachine()
     rc = RiscCompiler()
 
     rc.enter_input("ADDI", "x1", "x0", int("00000000000000000000000000001100", 2))
@@ -37,7 +35,7 @@ def test_sll():
     rc.enter_input("SLL", "x3", "x1", "x2")
 
     program_memory = rc.createoutput()
-    rm.program_memory = program_memory
+    rm = RiscMachine(program=program_memory)
 
     rm.run_one_cycle()
     rm.run_one_cycle()

@@ -11,12 +11,13 @@ from riscv.instruction import (
 
 class RiscMachine:
     """
-    This implements a machine able of executing Risc V instructions
+    This implements a machine able of executing Risc V instructions.
+    Needs to be passed
     """
 
-    def __init__(self):
+    def __init__(self, program=None):
         self.registers = {"x0": 0, "x1": 0, "x2": 0, "x5": 0, "x10": 0}
-        self.program_memory = []
+        self.program_memory = program
         self.pc = 0
         self.ir = None
         self.mar = None

@@ -15,8 +15,8 @@ def test_jal():
     rc.enter_input("ADDI", "x10", "x0", 1000)
     rc.enter_input("JAL", "x0", -2)
 
-    rm = RiscMachine()
-    rm.program_memory = rc.createoutput()
+    program_memory = rc.createoutput()
+    rm = RiscMachine(program=program_memory)
     rm.run_one_cycle()
     rm.run_one_cycle()
     rm.run_one_cycle()
