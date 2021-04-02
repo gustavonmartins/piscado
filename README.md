@@ -1,22 +1,19 @@
-Risc PV
-Risc V in Python
+This is a Risc V ISA implementation in Python
 
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Pavo_cristatus_%28male%29_-feathers-8a.jpg/800px-Pavo_cristatus_%28male%29_-feathers-8a.jpg)
-
-Made during a funny live for Risc V telegram group Brazil
+Is is being developed with live streaming on Twitch and Youtube, with friends from Risc V Brazil Telegram Group
 
 Useful documentation:
-For basic architecture of CPU (PC, MAR, MDR, IR, etc):
-https://cseweb.ucsd.edu/classes/fa13/cse140L-a/LAB4_tinycpu.pdf
-https://elearning.algonquincollege.com/coursemat/abufarn/dat2343/chap_7.htm
-https://www.youtube.com/watch?v=jFDMZpkUWCw
+* For basic architecture of CPU (PC, MAR, MDR, IR, etc):
+  * https://cseweb.ucsd.edu/classes/fa13/cse140L-a/LAB4_tinycpu.pdf
+  * https://elearning.algonquincollege.com/coursemat/abufarn/dat2343/chap_7.htm
+  * https://www.youtube.com/watch?v=jFDMZpkUWCw
 
-Explanation of datapaths' five stages:
-https://www.cs.cornell.edu/courses/cs3410/2019sp/schedule/slides/06-cpu-pre.pdf
+* Explanation of datapaths' five stages:
+  * https://www.cs.cornell.edu/courses/cs3410/2019sp/schedule/slides/06-cpu-pre.pdf
 
-For a Risc V simulator:
-http://tice.sea.eseo.fr/riscv/
+* For a Risc V simulator:
+  * http://tice.sea.eseo.fr/riscv/
 
-For generating Risc V assembly code:
-https://godbolt.org/
+* For generating Risc V assembly code:
+  * https://godbolt.org/
 
