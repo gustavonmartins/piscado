@@ -1,8 +1,14 @@
-from risc_machine import RiscMachine
-from compiler import RiscCompiler
+"""
+Tests instructions of U type
+"""
+from riscv.risc_machine import RiscMachine
+from riscv.compiler import RiscCompiler
 
 
 def test_lui():
+    """
+    Tests LUI instructions
+    """
     rm = RiscMachine()
     rc = RiscCompiler()
 

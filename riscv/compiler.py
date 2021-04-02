@@ -1,11 +1,25 @@
-from instruction import InstructionI, InstructionJ, InstructionR, InstructionU
+"""
+This module is used to generate code to be read by the risc machine
+"""
+
+from riscv.instruction import InstructionI, InstructionJ, InstructionR, InstructionU
 
 
 class RiscCompiler:
+    """
+    Creates assembly code to be read by the risc machine.
+    Enter a command via the enter_input function
+    """
+
     def __init__(self):
         self.program_memory = []
 
     def enter_input(self, op, a, b=None, c=None):
+        """
+        Enter an assembly command thru this function. For instance:
+        enter_input("ADDI", "x0", "x0", 6)
+        To write all instructions to a program memory, use createoutput()
+        """
         if op == "ADDI":
             self.program_memory.append(
                 InstructionI(
@@ -46,4 +60,7 @@ class RiscCompiler:
             self.program_memory.append(InstructionJ(offset=b, rd=a))
 
     def createoutput(self):
+        """
+        Writes a program to memory
+        """
         return self.program_memory

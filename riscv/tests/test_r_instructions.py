@@ -1,8 +1,14 @@
-from risc_machine import RiscMachine
-from compiler import RiscCompiler
+"""
+Tests R type instructions
+"""
+from riscv.risc_machine import RiscMachine
+from riscv.compiler import RiscCompiler
 
 
 def test_add():
+    """
+    Tests ADD instructions
+    """
     rm = RiscMachine()
     rc = RiscCompiler()
 
@@ -20,6 +26,9 @@ def test_add():
 
 
 def test_sll():
+    """
+    Tests SLL instruction
+    """
     rm = RiscMachine()
     rc = RiscCompiler()
 

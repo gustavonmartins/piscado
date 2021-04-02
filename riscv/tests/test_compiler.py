@@ -1,4 +1,7 @@
-from compiler import RiscCompiler
+"""
+Tests basic compiler working
+"""
+from riscv.compiler import RiscCompiler
 
 
 def test_amount_of_statements():
@@ -15,7 +18,8 @@ def test_amount_of_statements():
 
 def test_amount_of_statements_with_x0():
     """
-    Ensures that amount of statemens produced is as expected
+    Assigning to x0 should count as a statement, even though it has no effect
+
     """
     rc = RiscCompiler()
     rc.enter_input("ADDI", "x0", "x2", 6)

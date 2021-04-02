@@ -1,7 +1,19 @@
-from instruction import InstructionI, InstructionR, InstructionU, InstructionJ
+"""
+This implements a machine able of executing Risc V instructions
+"""
+from riscv.instruction import (
+    InstructionI,
+    InstructionR,
+    InstructionU,
+    InstructionJ,
+)
 
 
 class RiscMachine:
+    """
+    This implements a machine able of executing Risc V instructions
+    """
+
     def __init__(self):
         self.registers = {"x0": 0, "x1": 0, "x2": 0, "x5": 0, "x10": 0}
         self.program_memory = []
@@ -11,9 +23,15 @@ class RiscMachine:
         self.mdr = None
 
     def inspect_register(self, register):
+        """
+        Allows user to see contents of a specific register
+        """
         return self.registers.get(register)
 
     def run_one_cycle(self):
+        """
+        Executes one instructions. Needs to be run as many times as instructions
+        """
         self._fetch()
         # self.decode()
         self._execute()
