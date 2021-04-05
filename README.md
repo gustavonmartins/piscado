@@ -9,6 +9,7 @@ Useful documentation:
   * https://www.youtube.com/watch?v=jFDMZpkUWCw
 
 * Explanation of datapaths' five stages:
+  * https://passlab.github.io/CSE564/notes/lecture08_RISCV_Impl.pdf
   * https://www.cs.cornell.edu/courses/cs3410/2019sp/schedule/slides/06-cpu-pre.pdf
 
 * For a Risc V simulator:
@@ -16,4 +17,3 @@ Useful documentation:
 
 * For generating Risc V assembly code:
   * https://godbolt.org/
-
