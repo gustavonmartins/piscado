@@ -16,9 +16,9 @@ class InstructionI:
     rs1: str
     imm: int
 
-    def execute(self, rs1):
+    def execute(self, rs1_value):
         """Calls risc machine to execute this instruction"""
-        return rs1 + self.imm
+        return rs1_value + self.imm
 
 
 @dataclass
@@ -71,3 +71,16 @@ class InstructionJ:
     def execute(self):
         """Calls risc machine to execute this instruction"""
         return self.offset
+
+
+@dataclass
+class InstructionS:
+    """
+    Represents S instructions
+    """
+
+    opcode: int
+    imm: int
+    funct3: int
+    rs1: str
+    rs2: str
