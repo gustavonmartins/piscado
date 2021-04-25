@@ -1,4 +1,4 @@
-This is a Risc V ISA implementation in Python
+Implements a subset of Risc V ISA in Python, for educatinal purposes
 
 Is is being developed with live streaming on Twitch and Youtube, with friends from Risc V Brazil Telegram Group
 
